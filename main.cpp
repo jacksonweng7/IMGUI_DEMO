@@ -23,9 +23,12 @@ int main(){
     ImGui_ImplGlfw_InitForOpenGL(Windows, true);
     ImGui_ImplOpenGL3_Init("#version 330");
 
+    ImGui::StyleColorsLight();
 
     while(!glfwWindowShouldClose(Windows)){
 
+        glfwPollEvents();
+        glClearColor(0.45f,0.55,0.60f,1.00f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         ImGui_ImplOpenGL3_NewFrame();
@@ -42,4 +45,7 @@ int main(){
         glfwSwapBuffers(Windows);
         glfwPollEvents();
     }
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
 }
